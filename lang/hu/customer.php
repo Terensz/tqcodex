@@ -1,0 +1,35 @@
+<?php
+
+return [
+    'Customer' => 'Ügyfél',
+    'CustomerEmailAddress' => 'Ügyfél e-mail címe',
+    'EditCustomerDescription' => 'Ügyfél: a webhely nem bennfentes (nem üzemeltető) felhasználója.',
+    'CustomerNotFound' => 'Az ügyfél nem található',
+    'Organization' => 'Szervezet',
+    'OrganizationName' => 'Szervezet neve',
+    'OrgType' => 'Társasági forma',
+    'ContactEmailDoesNotBelongToAValidUser' => 'Nem érhető el felhasználó ezzel az e-mail címmel.',
+    'OrganizationNameDoesNotBelongToAValidOrganization' => 'Ennek a szervezetnek a felvitelére nincs jogosultsága.',
+    'ContactRegister' => 'Felhasználói regisztráció',
+    'EditOrganizationDescription' => '',
+    'EditOrgAddressDescription' => '',
+    'OrgAddress' => 'Szervezet-cím',
+    'OrganizationLongName' => 'Szervezet hosszú neve',
+    'OrganizationEmail' => 'Szervezet e-mail elérhetősége',
+    'OrganizationPhone' => 'Szervezet telefonszáma',
+    'OrganizationTaxpayerId' => 'Szervezet adószáma',
+    'OrganizationTaxid' => 'Szervezet egyéb (nem magyar és nem EU) adószáma',
+    'OrganizationEutaxid' => 'Szervezet EU-s adószáma',
+    'ContactName' => 'Kapcsolattartó neve',
+    'CreatorLastName' => 'Létrehozó vezetékneve',
+    'CreatorFirstName' => 'Létrehozó keresztneve',
+    'OrganizationsInterface' => 'Szervezetek adminisztrációja',
+    'OrganizationList' => 'Szervezetek',
+    'OrganizationEdit' => 'Szervezet szerkesztése',
+    'OrgAddressList' => 'Szervezet-címek',
+    'OrgAddressEdit' => 'Szervezet-cím szerkesztése',
+    'AddressTitle' => 'Cím leírása',
+
+    'InvalidOrganization' => 'Érvénytelen szervezet',
+
+];

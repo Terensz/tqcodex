@@ -1,0 +1,12 @@
+includes:
+    - ./vendor/larastan/larastan/extension.neon
+parameters:
+    paths:
+        - app
+        - src
+        - database
+    level: 5
+    ignoreErrors:
+    excludePaths:
+        - tests
+    checkAlwaysTrueInstanceof: true

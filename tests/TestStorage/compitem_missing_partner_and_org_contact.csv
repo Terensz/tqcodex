@@ -1,0 +1,10 @@
+Ügyfél e-mail címe;Szervezet neve;Kompenzációra váró számla azonosítója;Belsős számlaazonosító;A számla típusa;Fizetési határidő;Késedelmi kamat mértéke;Késedelmi kamat összege;A számla végösszege;Fizetés módja;Pénznem;Részösszeg?;Vitatott?;Partner régiója;Partner neve;Partner e-mail címe;Partner kapcsolattartója;Partner adószáma;Már kompenzálva
+terencecleric@gmail.com;TRIEX KFT;20240502-001;INT-123456;Debt;2024-10-01;0;0;120000;Transfer;HUF;0;0;HU;NAPCSILLAG KFT.;szilva@gmail.com;Kovács János;13237912-2-19;0
+terencecleric@gmail.com;TRIEX KFT;20240502-002;INT-654321;Debt;2024-10-01;0;0;78000;Transfer;HUF;0;0;HU;AMBROZIA FOOD KFT.;alma@gmail.com;Kis Tihamér;13352479-2-13;1
+terencecleric@gmail.com;TRIEX KFT;20240502-003;INT-654321;Debt;2024-10-01;0;0;78000;Transfer;HUF;0;0;HU;MÖSZ;korte@gmail.com;Kolompai Edömér;19662927-2-43;1
+terencecleric@gmail.com;TRIEX KFT;20240502-004;INT-654321;Debt;2024-10-01;0;0;78000;Transfer;HUF;0;0;HU;NAPCSILLAG KFT.;;;13237912-2-19;1
+terencecleric@gmail.com;TRIEX KFT;20240502-005;INT-789012;Debt;2024-10-01;0;0;12300;Transfer;HUF;0;0;HU;Non-Existing NYRT.;;;13237912-2-19;0
+terencecleric@gmail.com;TRIEX KFT;20240502-006;INT-345678;Claim;2024-10-01;0;0;96000;Transfer;HUF;0;0;HU;NAPCSILLAG KFT.;;;13237912-2-19;0
+terencecleric@gmail.com;TRIEX KFT;20240502-007;INT-345678;Claim;2024-10-01;0;0;96000;Transfer;HUF;0;0;HU;NAPCSILLAG KFT.;;;13237912-2-19;0
+terencecleric@gmail.com;TRIEX KFT;20240502-008;INT-345678;Claim;2024-10-01;0;0;96000;Transfer;HUF;0;0;HU;NAPCSILLAG KFT.;;;13237912-2-19;0
+terencecleric@gmail.com;TRIEX KFT;20240502-009;INT-345678;Claim;2024-10-01;0;0;96000;Transfer;HUF;0;0;HU;NAPCSILLAG KFT.;;;13237912-2-19;0

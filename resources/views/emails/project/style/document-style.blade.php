@@ -1,0 +1,1 @@
+@include('emails.project.style.body-style')

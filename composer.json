@@ -1,0 +1,121 @@
+{
+    "name": "laravel/laravel",
+    "type": "project",
+    "description": "The skeleton application for the Laravel framework.",
+    "keywords": ["laravel", "framework"],
+    "license": "MIT",
+    "repositories": {
+        "local01": {
+            "type": "path",
+            "url": "packages/*"
+        }
+    },
+    "require": {
+        "php": "^8.2",
+        "ext-exif": "*",
+        "ext-gd": "*",
+        "asdh/laravel-flatpickr": "^2.2",
+        "geeky/query-cache-builder": "^1.1",
+        "guzzlehttp/guzzle": "^7.2",
+        "lab404/laravel-impersonate": "^1.7",
+        "laravel-frontend-presets/tall": "^8.0",
+        "laravel/framework": "^11.0",
+        "laravel/sanctum": "^4.0",
+        "laravel/tinker": "^2.8",
+        "league/html-to-markdown": "^5.1",
+        "livewire/livewire": "^3.4",
+        "maatwebsite/excel": "^3.1",
+        "masmerise/livewire-toaster": "^2.0",
+        "mpdf/mpdf": "^8.0.10",
+        "mpdf/qrcode": "^1.0",
+        "outhebox/blade-flags": "^1.5",
+        "propaganistas/laravel-phone": "^5.0",
+        "romanzipp/laravel-seo": "^2.7",
+        "spatie/laravel-data": "^4.0",
+        "spatie/laravel-permission": "^6.3",
+        "spatie/laravel-translatable": "^6.6",
+        "spatie/schema-org": "^3.23",
+        "tallstackui/tallstackui": "^1.15",
+        "te7a-houdini/laravel-trix": "^3.0",
+        "trianity/laravel-sqids": "^11.0",
+        "wire-elements/modal": "^2.0"
+    },
+    "require-dev": {
+        "fakerphp/faker": "^1.9.1",
+        "larastan/larastan": "^2.0",
+        "laravel/breeze": "^2.0",
+        "laravel/pint": "^1.0",
+        "laravel/sail": "^1.18",
+        "mockery/mockery": "^1.4.4",
+        "nunomaduro/collision": "^8.1",
+        "nunomaduro/phpinsights": "^2.4",
+        "pestphp/pest": "^2.33",
+        "pestphp/pest-plugin-faker": "^2.0",
+        "pestphp/pest-plugin-laravel": "^2.0",
+        "pestphp/pest-plugin-livewire": "^2.0",
+        "phpmd/phpmd": "^2.15",
+        "spatie/laravel-ignition": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Domain\\": "src/Domain/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/"
+        },
+        "files": [
+            "app/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
+            "@php artisan tallstackui:setup-icon --force --ansi"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi"
+        ],
+        "phpstan": [
+            "@php ./vendor/bin/phpstan analyse"
+        ],
+        "pint": [
+            "@php ./vendor/bin/pint"
+        ],
+        "phpmd": [
+            "phpmd app,src text cleancode"
+        ]
+    },
+    "scripts-descriptions": {
+        "phpstan": "Run PHPStan static analysis against your application.",
+        "pint": "Run Laravel Pint to correct syntaxes."
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "php-http/discovery": true
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
