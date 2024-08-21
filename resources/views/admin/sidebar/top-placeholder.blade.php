@@ -1,1 +1,0 @@
-<div class="flex h-1 shrink-0 items-center"></div>

@@ -2,7 +2,6 @@
 
 namespace Domain\Shared\Controllers\Base;
 
-use Domain\Shared\Events\RendringRouteContent;
 use Domain\Shared\Helpers\PHPHelper;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -91,6 +90,11 @@ abstract class BaseContentController extends Controller
         return view($view, $params);
     }
 
+    public function renderPage(Request $request, string $title, $params = [])
+    {
+        return $this->renderContent($request, 'public.page-switcher.page-livewire-loader', $title, $params);
+    }
+    
     public function collectToastsFromSession(Request $request)
     {
         $toasts = [];
