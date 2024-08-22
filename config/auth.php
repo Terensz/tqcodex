@@ -15,7 +15,7 @@ return [
 
     'defaults' => [
         'guard' => 'public_guard',
-        'passwords' => 'users',
+        'passwords' => 'admins',
     ],
     'contact' => [
         'driver' => 'eloquent',
@@ -75,24 +75,12 @@ return [
     'providers' => [
         'admins' => [
             'driver' => 'eloquent',
-            'model' => \Domain\Admin\Models\User::class,
+            'model' => \Domain\Admin\Models\Admin::class,
         ],
-        // 'customers' => [
-        //     'driver' => 'eloquent',
-        //     'model' => \Domain\Customer\Models\Contact::class,
-        // ],
         'customers' => [
             'driver' => 'customers_provider_driver',
             'model' => \Domain\Customer\Models\Contact::class,
         ],
-        // 'contact_profiles' => [
-        //     'driver' => 'eloquent',
-        //     'model' => \Domain\Customer\Models\ContactProfile::class,
-        // ],
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
     ],
 
     /*

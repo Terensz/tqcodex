@@ -2,8 +2,8 @@
 
 namespace Domain\Admin\Controllers;
 
-use Domain\Admin\Models\User;
-use Domain\Admin\Models\UserToken;
+use Domain\Admin\Models\Admin;
+use Domain\Admin\Models\AdminToken;
 use Domain\Admin\Rules\ValidAdminEmailChangeToken;
 use Domain\Admin\Rules\ValidAdminNewEmail;
 use Domain\Admin\Rules\ValidAdminOldEmail;
@@ -44,10 +44,10 @@ class EmailChangeController extends BaseContentController
         $token = $requestData['token'];
         $oldEmail = $requestData['old_email'];
         $newEmail = $requestData['email'];
-        $userToken = UserToken::where('token', $token)->first();
-        $user = User::where('email', $oldEmail)->first();
+        $userToken = AdminToken::where('token', $token)->first();
+        $user = Admin::where('email', $oldEmail)->first();
 
-        if ($user instanceof User) {
+        if ($user instanceof Admin) {
             $rules = [
                 'token' => ['required'],
                 'old_email' => ['required', 'email', new ValidAdminEmailChangeToken($user, $userToken, $newEmail), new ValidAdminOldEmail($user, $oldEmail)],

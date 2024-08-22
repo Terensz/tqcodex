@@ -6,5 +6,5 @@ uses()->group('basic');
 
 it('gives back successful response for basic home page', function (): void {
     //Act & Asert
-    get(route('home'))->assertOk();
+    get(route('project.homepage'))->assertOk();
 });

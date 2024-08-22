@@ -3,24 +3,24 @@
 namespace Domain\Admin\Rules;
 
 use Closure;
-use Domain\Admin\Models\User;
+use Domain\Admin\Models\Admin;
 use Illuminate\Contracts\Validation\ValidationRule;
 
 class ValidAdminOldEmail implements ValidationRule
 {
-    public $user;
+    public $admin;
 
     public $oldEmail;
 
-    public function __construct(?User $user, string $oldEmail)
+    public function __construct(?Admin $admin, string $oldEmail)
     {
-        $this->user = $user;
+        $this->admin = $admin;
         $this->oldEmail = $oldEmail;
     }
 
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        if ($this->user && $this->user->email !== $this->oldEmail) {
+        if ($this->admin && $this->admin->email !== $this->oldEmail) {
             $fail('user.OldEmailIsInproper');
         }
     }

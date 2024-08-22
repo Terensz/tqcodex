@@ -2,7 +2,7 @@
 
 namespace Domain\User\Services;
 
-use Domain\Admin\Models\User;
+use Domain\Admin\Models\Admin;
 use Domain\Customer\Models\Contact;
 use Domain\Customer\Models\ContactProfile;
 use Domain\Shared\Helpers\SessionHelper;
@@ -83,7 +83,7 @@ class UserService
     ];
 
     public const ROLE_TYPE_ENTITY_CLASSES = [
-        self::ROLE_TYPE_ADMIN => User::class,
+        self::ROLE_TYPE_ADMIN => Admin::class,
         self::ROLE_TYPE_CUSTOMER => Contact::class,
     ];
 
@@ -105,11 +105,11 @@ class UserService
         return null;
     }
 
-    public static function getAdmin(): ?User
+    public static function getAdmin(): ?Admin
     {
         $user = self::getUser(UserService::ROLE_TYPE_ADMIN);
 
-        return $user instanceof User ? $user : null;
+        return $user instanceof Admin ? $user : null;
     }
 
     public static function getContact(): ?Contact
@@ -168,7 +168,7 @@ class UserService
     }
 
     // public static function getUser(string $roleType): ?Authenticatable
-    public static function getUser(string $roleType): User|Contact|null
+    public static function getUser(string $roleType): Admin|Contact|null
     {
         $guardObject = self::getGuardObject($roleType);
 

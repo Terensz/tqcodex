@@ -3,7 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Domain\Admin\Models\User;
+use Domain\Admin\Models\Admin;
 use Domain\User\Services\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -29,7 +29,7 @@ class RedirectAdminIfAuthenticated
         $user = UserService::getUser(UserService::ROLE_TYPE_ADMIN);
 
         $isAdmin = false;
-        if ($user && $user instanceof User && $guardObject->check()) {
+        if ($user && $user instanceof Admin && $guardObject->check()) {
             $isAdmin = true;
         }
 

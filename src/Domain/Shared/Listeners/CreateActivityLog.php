@@ -2,7 +2,7 @@
 
 namespace Domain\Shared\Listeners;
 
-use Domain\Admin\Models\UserActivityLog;
+use Domain\Admin\Models\AdminActivityLog;
 use Domain\Customer\Models\ContactActivityLog;
 use Domain\User\Events\ActivityLogRequested;
 use Domain\User\Services\UserService;
@@ -38,7 +38,7 @@ class CreateActivityLog
                 'user_agent' => $event->user_agent,
             ];
             if ($event->roleType === UserService::ROLE_TYPE_ADMIN) {
-                $model = new UserActivityLog;
+                $model = new AdminActivityLog;
                 $propertyArray['user_id'] = $event->user_id;
             } else {
                 $model = new ContactActivityLog;

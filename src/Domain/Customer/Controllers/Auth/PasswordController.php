@@ -2,7 +2,7 @@
 
 namespace Domain\Customer\Controllers\Auth;
 
-use Domain\Admin\Rules\UserRules;
+use Domain\Admin\Rules\AdminRules;
 use Domain\Customer\Models\Contact;
 use Domain\Shared\Controllers\Base\BaseContentController;
 use Domain\User\Rules\CurrentPassword;
@@ -27,7 +27,7 @@ class PasswordController extends BaseContentController
         // dump('helo');exit;
         $validationRulesArray = [
             'current_password' => ['required', new CurrentPassword(UserService::getContact(), $request->current_password)],
-            'password' => UserRules::rules()['technicalPassword'],
+            'password' => AdminRules::rules()['technicalPassword'],
         ];
 
         $validated = $request->validateWithBag('updatePassword', $validationRulesArray);

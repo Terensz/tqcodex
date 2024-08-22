@@ -136,7 +136,7 @@ class ProfileController extends BaseCustomerController
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return Redirect::to(route('home'));
+        return Redirect::to(route('project.homepage'));
     }
 
     /**

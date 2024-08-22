@@ -18,7 +18,7 @@ class ContactRules
      */
     public static function rules($ignoreUserId = null): array
     {
-        $emailUniqueRule = Rule::unique('users', 'email');
+        $emailUniqueRule = Rule::unique('admins', 'email');
         if ($ignoreUserId && Contact::find($ignoreUserId)) {
             $emailUniqueRule = $emailUniqueRule->ignore($ignoreUserId);
         }

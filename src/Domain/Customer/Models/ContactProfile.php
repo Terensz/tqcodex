@@ -168,16 +168,6 @@ final class ContactProfile extends BaseModel implements CanResetPasswordContract
     }
 
     /**
-     * The organizations that belong to the contact profile.
-     *
-     * @return BelongsToMany<Organization>
-     */
-    public function organizations(): BelongsToMany
-    {
-        return $this->belongsToMany(Organization::class, 'contactprofile_organizations', 'contact_profile_id', 'organization_id');
-    }
-
-    /**
      * Get the email address that should be used for verification.
      *
      * @return string

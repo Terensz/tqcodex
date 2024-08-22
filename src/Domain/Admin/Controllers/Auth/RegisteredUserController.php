@@ -3,7 +3,7 @@
 namespace Domain\Admin\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Domain\Admin\Models\User;
+use Domain\Admin\Models\Admin;
 use Domain\User\Services\UserService;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -32,17 +32,17 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.Admin::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        $user = User::create([
+        $user = Admin::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
 
-        if ($user instanceof User) {
+        if ($user instanceof Admin) {
             event(new Registered($user));
             Auth::login($user);
         }

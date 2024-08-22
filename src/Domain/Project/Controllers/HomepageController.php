@@ -17,7 +17,7 @@ class HomepageController extends BaseContentController
      */
     public function index(Request $request)
     {
-        return $this->renderPage($request, 'public.page-switcher.page-livewire-loader', __('shared.Homepage'), [
+        return $this->renderPage($request, __('shared.Homepage'), [
             
         ]);
     }

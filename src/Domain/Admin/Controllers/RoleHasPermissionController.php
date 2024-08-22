@@ -31,7 +31,7 @@ class RoleHasPermissionController extends BaseAdminController
     {
         return $this->renderContent($request, 'user.role-has-permission.list', 'PermissionsOfRolesList', [
             'menu' => $this->getMenuData(),
-            'user' => $this->getUserData(),
+            'admin' => $this->getAdminData(),
             // 'formUrlBase' => '/'.UserService::getHome(UserService::ROLE_TYPE_ADMIN).'/role-edit',
         ]);
     }

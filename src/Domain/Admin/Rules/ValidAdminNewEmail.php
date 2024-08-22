@@ -3,7 +3,7 @@
 namespace Domain\Admin\Rules;
 
 use Closure;
-use Domain\Admin\Models\UserToken;
+use Domain\Admin\Models\AdminToken;
 use Illuminate\Contracts\Validation\ValidationRule;
 
 class ValidAdminNewEmail implements ValidationRule
@@ -12,7 +12,7 @@ class ValidAdminNewEmail implements ValidationRule
 
     public $newEmail;
 
-    public function __construct(?UserToken $userToken, string $newEmail)
+    public function __construct(?AdminToken $userToken, string $newEmail)
     {
         $this->userToken = $userToken;
         $this->newEmail = $newEmail;

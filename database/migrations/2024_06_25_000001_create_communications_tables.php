@@ -18,16 +18,9 @@ return new class extends Migration
          *
          * - Your org can create a campaign. If it does so, than anyone can see that in the campaigns' list, who has the permission.
          *
-         * - It's possible for a campaign to belong to NO organization. In that case: noone can see that in the campaigns' list,
-         * but you can see the campaign data in your dispatch process list, if you are the dispatch process' creator.
          */
         Schema::create('communicationcampaigns', function (Blueprint $table) {
             $table->unsignedBigInteger('id')->autoIncrement();
-            $table->unsignedBigInteger('organization_id')->nullable();
-            $table->foreign('organization_id') // Every campaing can have multiple dispatch-processes.
-                ->references('id')
-                ->on('organizations')
-                ->onDelete('set null');
             $table->text('reference_code');
             $table->text('title_lang_ref'); // The title ref of the campaign, e.g.: "database.2024SummerSales".
             // $table->longText('raw_subject'); // Spatie translatable text of the subject of the sent mail (or other comm).

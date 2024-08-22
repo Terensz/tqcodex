@@ -15,7 +15,7 @@ class VisitLog extends BaseModel
     protected $table = 'visitlogs';
 
     protected $fillable = [
-        'user_id',
+        'admin_id',
         'contact_id',
         'url',
         // 'route_name',

@@ -3,8 +3,8 @@
 namespace Domain\Admin\Controllers;
 
 use Domain\Admin\Controllers\Base\BaseAdminController;
-use Domain\Admin\Models\User;
-use Domain\Admin\Models\UserToken;
+use Domain\Admin\Models\Admin;
+use Domain\Admin\Models\AdminToken;
 use Domain\Admin\Requests\ProfileUpdateRequest;
 use Domain\Shared\Controllers\Base\BaseContentController;
 use Domain\Shared\Helpers\TokenHelper;
@@ -54,16 +54,16 @@ class ProfileController extends BaseAdminController
             $modifiedEmail = $user->email;
 
             if ($originalEmail !== $modifiedEmail) {
-                $existingUserToken = UserToken::where(['email' => $modifiedEmail, 'token_type' => UserToken::TOKEN_TYPE_EMAIL_CHANGE])->first();
+                $existingUserToken = AdminToken::where(['email' => $modifiedEmail, 'token_type' => AdminToken::TOKEN_TYPE_EMAIL_CHANGE])->first();
                 if ($existingUserToken) {
                     $existingUserToken->delete();
                 }
 
                 $token = TokenHelper::generateToken();
-                $userToken = new UserToken;
+                $userToken = new AdminToken;
                 $userToken->email = $modifiedEmail;
                 $userToken->token = $token;
-                $userToken->token_type = UserToken::TOKEN_TYPE_EMAIL_CHANGE;
+                $userToken->token_type = AdminToken::TOKEN_TYPE_EMAIL_CHANGE;
                 $userToken->save();
 
                 $user->sendEmailChangeRequestNotification($token, $originalEmail, $modifiedEmail);
@@ -98,7 +98,7 @@ class ProfileController extends BaseAdminController
         ]);
 
         $user = UserService::getUser(UserService::ROLE_TYPE_ADMIN);
-        if ($user instanceof User) {
+        if ($user instanceof Admin) {
             UserService::getGuardObject(UserService::ROLE_TYPE_ADMIN)->logout();
 
             $user->delete();
@@ -107,6 +107,6 @@ class ProfileController extends BaseAdminController
             $request->session()->regenerateToken();
         }
 
-        return Redirect::to(route('home'));
+        return Redirect::to(route('project.homepage'));
     }
 }

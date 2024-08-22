@@ -30,7 +30,7 @@ class PermissionController extends BaseAdminController
     {
         return $this->renderContent($request, 'user.permission.list', __('shared.ListOfItem', ['plural_item' => __('permission.Permissions')]), [
             'menu' => $this->getMenuData(),
-            'user' => $this->getUserData(),
+            'admin' => $this->getAdminData(),
             'formUrlBase' => '/'.UserService::getHome(UserService::ROLE_TYPE_ADMIN).'/permission-edit',
         ]);
     }

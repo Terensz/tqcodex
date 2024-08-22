@@ -30,7 +30,7 @@ class RoleController extends BaseAdminController
     {
         return $this->renderContent($request, 'user.role.list', __('shared.ListOfItem', ['plural_item' => __('role.Roles')]), [
             'menu' => $this->getMenuData(),
-            'user' => $this->getUserData(),
+            'admin' => $this->getAdminData(),
             'formUrlBase' => '/'.UserService::getHome(UserService::ROLE_TYPE_ADMIN).'/role-edit',
         ]);
     }

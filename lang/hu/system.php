@@ -4,7 +4,7 @@ return [
 
     'SystemErrorLogs' => 'Rendszerhiba-logok',
     'VisitLogs' => 'Látogatási logok',
-    'UserActivityLogs' => 'Admin aktivitási logok',
+    'AdminActivityLogs' => 'Admin aktivitási logok',
     'ContactActivityLogs' => 'Ügyfél aktivitási logok',
 
 ];

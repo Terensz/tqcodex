@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\Customer\Models;
 
-use Domain\Admin\Models\User;
+use Domain\Admin\Models\Admin;
 use Domain\Customer\Builders\ContactBuilder;
 use Domain\Shared\Enums\DBSortDirection;
 use Domain\Shared\Models\BaseModel;
@@ -180,26 +180,6 @@ final class Contact extends BaseModel implements AuthenticatableContract, Author
         return $this->contactProfile()->first();
     }
 
-    /**
-     * The Users that belong to the Contact.
-     *
-     * @return BelongsToMany<User>
-     */
-    public function users(): BelongsToMany
-    {
-        return $this->belongsToMany(User::class);
-    }
-
-    /**
-     * Get the Status associated with the Contact.
-     *
-     * @return BelongsTo<ContactStatus, Contact>
-     */
-    public function status(): BelongsTo
-    {
-        return $this->belongsTo(ContactStatus::class);
-    }
-
     public function getNameAttribute(): ?string
     {
         return $this->getContactProfile() ? $this->getContactProfile()->getName() : null;
@@ -316,20 +296,6 @@ final class Contact extends BaseModel implements AuthenticatableContract, Author
         UserRoleService::syncRolesToCustomer($roleNames, $this);
 
         return $saveResult;
-    }
-
-    public function getOrganizations()
-    {
-        $organizations = [];
-        $contactProfile = $this->getContactProfile();
-        if ($contactProfile) {
-            $contactProfileOrganizations = ContactProfileOrganization::where(['contact_profile_id' => $contactProfile->id])->orderBy('organization_id', DBSortDirection::ASC->value)->get();
-            foreach ($contactProfileOrganizations as $contactProfileOrganization) {
-                $organizations[] = $contactProfileOrganization->organization()->first();
-            }
-        }
-
-        return $organizations;
     }
 
     // public function save(array $options = [])

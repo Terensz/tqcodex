@@ -28,6 +28,6 @@ class LogoutController extends BaseContentController
 
         $request->session()->regenerateToken();
 
-        return redirect(route('home'));
+        return redirect(route('project.homepage'));
     }
 }

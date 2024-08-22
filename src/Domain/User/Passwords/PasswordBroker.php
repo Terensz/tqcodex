@@ -3,7 +3,7 @@
 namespace Domain\User\Passwords;
 
 use Closure;
-use Domain\Admin\Models\User;
+use Domain\Admin\Models\Admin;
 use Domain\Customer\Models\Contact;
 use Illuminate\Auth\Passwords\PasswordBroker as BasePasswordBroker;
 // use Illuminate\Auth\Passwords\TokenRepositoryInterface;
@@ -53,7 +53,7 @@ class PasswordBroker extends BasePasswordBroker
                 $this->tokens->create($user->getContactProfile())
             );
         }
-        if ($user && $user instanceof User) {
+        if ($user && $user instanceof Admin) {
             $user->sendPasswordResetNotification(
                 $this->tokens->create($user)
             );

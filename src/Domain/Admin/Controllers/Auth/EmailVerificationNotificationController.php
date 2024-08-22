@@ -3,7 +3,7 @@
 namespace Domain\Admin\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Domain\Admin\Models\User;
+use Domain\Admin\Models\Admin;
 use Domain\User\Services\UserService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -17,7 +17,7 @@ class EmailVerificationNotificationController extends Controller
     {
         $user = UserService::getUser(UserService::ROLE_TYPE_ADMIN);
 
-        if (! $user instanceof User || ! $user->hasVerifiedEmail()) {
+        if (! $user instanceof Admin || ! $user->hasVerifiedEmail()) {
             return back()->with('status', 'verification-link-sent');
         }
 

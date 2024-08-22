@@ -1,6 +1,5 @@
 <?php
 
-use Domain\Admin\Controllers\AdminController;
 use Domain\Admin\Controllers\Auth\AuthenticatedSessionController;
 use Domain\Admin\Controllers\Auth\NewPasswordController;
 use Domain\Admin\Controllers\Auth\PasswordController;
@@ -104,7 +103,7 @@ Route::prefix($prefix)->middleware(['auth.admin'])
 Route::middleware(['auth.admin', 'verify.access.token:'.UserService::ROLE_TYPE_ADMIN])
     ->prefix(UserService::getHomeRouteBase(UserService::ROLE_TYPE_ADMIN))
     ->group(function () {
-        Route::get('dashboard', [AdminController::class, 'dashboard'])
+        Route::get('dashboard', [\Domain\Admin\Controllers\AdminInterfaceController::class, 'dashboard'])
             ->middleware('permission:'.PermissionService::createPermissionName(PermissionService::PREFIX_VIEW, PermissionSuffixService::SUFFIX_ADMIN_DASHBOARD).','.UserService::getGuardName(UserService::ROLE_TYPE_ADMIN))
             ->name('admin.dashboard');
 
@@ -134,11 +133,11 @@ Route::middleware(['auth.admin', 'verify.access.token:'.UserService::ROLE_TYPE_A
         /**
          * UserList
          */
-        Route::get('admin/user/list', [Domain\Admin\Controllers\UserController::class, 'list'])
+        Route::get('admin/user/list', [Domain\Admin\Controllers\AdminController::class, 'list'])
             ->middleware('permission:'.PermissionService::createPermissionName(PermissionService::PREFIX_VIEW, PermissionSuffixService::SUFFIX_ADMIN_ADMINS).','.UserService::getGuardName(UserService::ROLE_TYPE_ADMIN))
             ->name('admin.admin.user.list');
 
-        Route::match(['get', 'post'], 'admin/user/edit/{user?}', [Domain\Admin\Controllers\UserController::class, 'edit'])
+        Route::match(['get', 'post'], 'admin/user/edit/{user?}', [Domain\Admin\Controllers\AdminController::class, 'edit'])
             ->middleware('permission:'.PermissionService::createPermissionName(PermissionService::PREFIX_EDIT, PermissionSuffixService::SUFFIX_ADMIN_ADMINS).','.UserService::getGuardName(UserService::ROLE_TYPE_ADMIN))
             ->name('admin.admin.user.edit');
 
@@ -198,7 +197,7 @@ Route::middleware(['auth.admin', 'verify.access.token:'.UserService::ROLE_TYPE_A
         /**
          * UsersActivityLogList
          */
-        Route::get('user/user-activity-log/list', [Domain\Admin\Controllers\UserActivityLogController::class, 'list'])
+        Route::get('user/user-activity-log/list', [Domain\Admin\Controllers\AdminActivityLogController::class, 'list'])
             ->middleware('permission:'.PermissionService::createPermissionName(PermissionService::PREFIX_VIEW, PermissionSuffixService::SUFFIX_ADMIN_ADMINS_ACTIVITY_LOG).','.UserService::getGuardName(UserService::ROLE_TYPE_ADMIN))
             ->name('admin.user.user-activity-log.list');
 
@@ -248,40 +247,4 @@ Route::middleware(['auth.admin', 'verify.access.token:'.UserService::ROLE_TYPE_A
         Route::get('project/dashboard', [AdminProjectController::class, 'dashboard'])
             ->middleware('permission:'.PermissionService::createPermissionName(PermissionService::PREFIX_VIEW, PermissionSuffixService::SUFFIX_ADMIN_DASHBOARD).','.UserService::getGuardName(UserService::ROLE_TYPE_ADMIN))
             ->name('admin.project.dashboard');
-
-        /**
-         * CustomersCashflowDataList
-         */
-        Route::get('finance/cashflow-data/list', [Domain\Finance\Controllers\CashflowDataController::class, 'list'])
-            ->middleware('permission:'.PermissionService::createPermissionName(PermissionService::PREFIX_VIEW, PermissionSuffixService::SUFFIX_ADMIN_CUSTOMERS_CASHFLOW_DATA).','.UserService::getGuardName(UserService::ROLE_TYPE_ADMIN))
-            ->name('admin.finance.cashflow-data.list');
-
-        Route::post('finance/cashflow-data/view/{id?}', [Domain\Finance\Controllers\CashflowDataController::class, 'view'])
-            ->middleware('permission:'.PermissionService::createPermissionName(PermissionService::PREFIX_VIEW, PermissionSuffixService::SUFFIX_ADMIN_CUSTOMERS_CASHFLOW_DATA).','.UserService::getGuardName(UserService::ROLE_TYPE_ADMIN))
-            ->name('admin.finance.cashflow-data.view');
-
-        /**
-         * AccountSettlementLog
-         */
-        Route::get('finance/account-settlement-log/list', [Domain\Finance\Controllers\AccountSettlementLogController::class, 'list'])
-            ->middleware('permission:'.PermissionService::createPermissionName(PermissionService::PREFIX_VIEW, PermissionSuffixService::SUFFIX_ADMIN_ACCOUNT_SETTLEMENT_LOG).','.UserService::getGuardName(UserService::ROLE_TYPE_ADMIN))
-            ->name('admin.finance.account-settlement-log.list');
-
-        Route::post('finance/account-settlement-log/view/{id?}', [Domain\Finance\Controllers\AccountSettlementLogController::class, 'view'])
-            ->middleware('permission:'.PermissionService::createPermissionName(PermissionService::PREFIX_VIEW, PermissionSuffixService::SUFFIX_ADMIN_ACCOUNT_SETTLEMENT_LOG).','.UserService::getGuardName(UserService::ROLE_TYPE_ADMIN))
-            ->name('admin.finance.account-settlement-log.view');
-
-        /**
-         * CustomerReferralSystem
-         */
-        Route::get('project/customer-referral-system', [Domain\Project\Controllers\CustomerReferralSystemController::class, 'index'])
-            ->middleware('permission:'.PermissionService::createPermissionName(PermissionService::PREFIX_VIEW, PermissionSuffixService::SUFFIX_ADMIN_CUSTOMER_REFERRAL_SYSTEM).','.UserService::getGuardName(UserService::ROLE_TYPE_ADMIN))
-            ->name('admin.project.customer-referral-system.index');
-
-        /**
-         * ServicePrices
-         */
-        Route::get('project/service-prices', [Domain\Project\Controllers\ServicePricesController::class, 'index'])
-            ->middleware('permission:'.PermissionService::createPermissionName(PermissionService::PREFIX_VIEW, PermissionSuffixService::SUFFIX_ADMIN_SERVICE_PRICES).','.UserService::getGuardName(UserService::ROLE_TYPE_ADMIN))
-            ->name('admin.project.service-prices.index');
     });

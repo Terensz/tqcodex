@@ -2,7 +2,7 @@
 
 namespace Domain\Admin\Requests;
 
-use Domain\Admin\Models\User;
+use Domain\Admin\Models\Admin;
 use Domain\User\Services\UserService;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -16,10 +16,10 @@ class ProfileUpdateRequest extends FormRequest
      */
     public function rules(): array
     {
-        $rule = Rule::unique(User::class);
+        $rule = Rule::unique(Admin::class);
         $user = UserService::getUser(UserService::ROLE_TYPE_ADMIN);
 
-        if ($user && $user instanceof User) {
+        if ($user && $user instanceof Admin) {
             $rule = $rule->ignore($user->id);
         }
 

@@ -2,7 +2,7 @@
 
 namespace Domain\User\Services;
 
-use Domain\Admin\Models\User;
+use Domain\Admin\Models\Admin;
 use Domain\Customer\Models\Contact;
 use Domain\User\Models\Permission;
 use Domain\User\Models\Role;
@@ -13,19 +13,14 @@ class UserRoleService
     /**
      * Get user object
      */
-    public static function getAdminIfPermitted(?User $user = null): User
+    public static function getAdminIfPermitted(?Admin $user = null): Admin
     {
-        // dump('==== getAdminIfPermitted() ====');
-        // dump($user);
         if (! $user) {
             $user = UserService::getAdmin();
         }
-        if (! $user instanceof User) {
+        if (! $user instanceof Admin) {
             throw new \Exception('Missing admin.');
         }
-
-        // dump($user->id.' - '.$user->name);// exit;
-        // if ()
 
         return $user;
     }
@@ -45,11 +40,10 @@ class UserRoleService
     /**
      * assign role
      */
-    public static function assignRoleToAdmin(string $roleName, ?User $user = null): User
+    public static function assignRoleToAdmin(string $roleName, ?Admin $user = null): Admin
     {
         $user = self::getAdminIfPermitted($user);
         $user->assignRole($roleName);
-
         return $user->refresh();
     }
 
@@ -64,10 +58,9 @@ class UserRoleService
     /**
      * sync roles
      */
-    public static function syncRolesToAdmin(array $roleNames, ?User $user = null): User
+    public static function syncRolesToAdmin(array $roleNames, ?Admin $user = null): Admin
     {
         $user = self::getAdminIfPermitted($user);
-        // dump($roleNames);exit;
         $user->syncRoles($roleNames);
 
         return $user->refresh();
@@ -84,7 +77,7 @@ class UserRoleService
     /**
      * remove role
      */
-    public static function removeRoleFromAdmin($roleName, ?User $user = null)
+    public static function removeRoleFromAdmin($roleName, ?Admin $user = null)
     {
         $user = self::getAdminIfPermitted($user);
 
@@ -101,7 +94,7 @@ class UserRoleService
     /**
      * has role
      */
-    public static function adminHasRole($roleName, ?User $user = null)
+    public static function adminHasRole($roleName, ?Admin $user = null)
     {
         $user = self::getAdminIfPermitted($user);
 
@@ -123,7 +116,7 @@ class UserRoleService
     /**
      * has permission
      */
-    public static function adminHasPermission($searchedPermission, ?User $user = null): bool
+    public static function adminHasPermission($searchedPermission, ?Admin $user = null): bool
     {
         $user = self::getAdminIfPermitted($user);
         foreach (self::getAllPermissionsOfAdmin($user) as $permission) {
@@ -153,7 +146,7 @@ class UserRoleService
     /**
      * get all permissions
      */
-    public static function getAllPermissionsOfAdmin(?User $user = null)
+    public static function getAllPermissionsOfAdmin(?Admin $user = null)
     {
         $user = self::getAdminIfPermitted($user);
 
@@ -169,7 +162,7 @@ class UserRoleService
 
     // Admin only
 
-    public static function getAllowedAdminRoleNames(?User $user = null)
+    public static function getAllowedAdminRoleNames(?Admin $user = null)
     {
         $user = UserRoleService::getAdminIfPermitted($user);
         $allowedRoleNamesToView = [];

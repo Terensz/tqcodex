@@ -2,8 +2,8 @@
 
 namespace Domain\Admin\Controllers\Auth;
 
-use Domain\Admin\Models\User;
-use Domain\Admin\Rules\UserRules;
+use Domain\Admin\Models\Admin;
+use Domain\Admin\Rules\AdminRules;
 use Domain\Shared\Controllers\Base\BaseContentController;
 use Domain\User\Rules\CurrentPassword;
 use Domain\User\Services\UserService;
@@ -25,37 +25,18 @@ class PasswordController extends BaseContentController
     {
         $validationRulesArray = [
             'current_password' => ['required', new CurrentPassword(UserService::getAdmin(), $request->current_password)],
-            'password' => UserRules::rules()['technicalPassword'],
+            'password' => AdminRules::rules()['technicalPassword'],
         ];
 
         $validated = $request->validateWithBag('updatePassword', $validationRulesArray);
 
-        $user = UserService::getUser(UserService::ROLE_TYPE_ADMIN);
+        $admin = UserService::getUser(UserService::ROLE_TYPE_ADMIN);
 
-        if ($user && $user instanceof User) {
-            $user->password = Hash::make($validated['password']);
-            $user->save();
+        if ($admin && $admin instanceof Admin) {
+            $admin->password = Hash::make($validated['password']);
+            $admin->save();
         }
 
         return back()->with('success', __('user.PasswordUpdated'));
     }
-
-    // public function update(Request $request): RedirectResponse
-    // {
-    //     $validationRulesArray = [
-    //         'current_password' => ['required', 'current_password'],
-    //         'password' => UserRules::rules()['technicalPassword'],
-    //     ];
-
-    //     $validated = $request->validateWithBag('updatePassword', $validationRulesArray);
-
-    //     $user = UserService::getUser(UserService::ROLE_TYPE_ADMIN);
-
-    //     if ($user && $user instanceof User) {
-    //         $user->password = Hash::make($validated['password']);
-    //         $user->save();
-    //     }
-
-    //     return back()->with('status', 'password-updated');
-    // }
 }

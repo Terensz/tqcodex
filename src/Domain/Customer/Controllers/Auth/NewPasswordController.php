@@ -2,7 +2,7 @@
 
 namespace Domain\Customer\Controllers\Auth;
 
-use Domain\Admin\Rules\UserRules;
+use Domain\Admin\Rules\AdminRules;
 use Domain\Customer\Models\ContactProfile;
 use Domain\Customer\Rules\ValidCustomerPasswordResetToken;
 use Domain\Shared\Controllers\Base\BaseContentController;
@@ -55,7 +55,7 @@ class NewPasswordController extends BaseContentController
             abort(403, 'customer.CustomerNotFound');
         }
 
-        $rulesConfig = UserRules::rules();
+        $rulesConfig = AdminRules::rules();
 
         $rules = [
             'token' => ['required'],

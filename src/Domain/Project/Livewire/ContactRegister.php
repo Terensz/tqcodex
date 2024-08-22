@@ -57,13 +57,12 @@ final class ContactRegister extends BaseEditComponent
         // dump($contact->getContactProfile());exit;
         $this->form->setContact(new Contact);
         $this->form->setContactProfile(new ContactProfile);
-        $this->form->setOrganization(new Organization);
         $this->invitedRegister = $invitedRegister;
         // $this->partnerEmail = $partnerEmail;
         // $this->partnerName = $partnerName;
         // $this->partnerContact = $partnerContact;
-        $this->form->organization_email = $partnerEmail;
-        $this->form->organization_name = $partnerName;
+        // $this->form->organization_email = $partnerEmail;
+        // $this->form->organization_name = $partnerName;
         // $this->form->partner_contact = $partnerContact;
 
         // dump($this->form->contact);

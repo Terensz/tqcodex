@@ -3,7 +3,7 @@
 namespace Domain\Admin\Rules;
 
 use Closure;
-use Domain\Admin\Models\User;
+use Domain\Admin\Models\Admin;
 use Domain\User\Services\UserService;
 use Illuminate\Auth\Passwords\PasswordBroker;
 use Illuminate\Contracts\Validation\ValidationRule;
@@ -15,7 +15,7 @@ class ValidAdminPasswordResetToken implements ValidationRule
 
     public $token;
 
-    public function __construct(?User $user, $token)
+    public function __construct(?Admin $user, $token)
     {
         $this->user = $user;
         $this->token = $token;

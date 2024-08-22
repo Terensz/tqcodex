@@ -62,32 +62,4 @@ class ContactBuilder extends BaseBuilder
             now()->subMonth()->endOfMonth(),
         ]);
     }
-
-    // public function orderByName()
-    // {
-    //     return $this->orderBy('lastname')->orderBy('firstname');
-    // }
-
-    // public function whereEmailIs($email)
-    // {
-    //     return $this->whereAssociatedPropertyIs('contactProfile', 'email', BaseBuilder::EQUALS, $email);
-    // }
-
-    // public function whereContactProfilePropertyLike($propertyName, $value)
-    // {
-    //     return $this->valid()->whereHas('contactProfile', function ($query) use ($propertyName, $value) {
-    //         $query->where($propertyName, 'like', '%'.$value.'%');
-    //     });
-    // }
-
-    // public function orderByContactProfileProperty($property, $direction)
-    // {
-    //     return $this
-    //         ->orderBy(
-    //             $this->whereHas('contactProfile'),
-    //             // ContactProfile::select($property)
-    //             //     ->whereColumn('companies.user_id', 'users.id'),
-    //             'asc'
-    //         );
-    // }
 }

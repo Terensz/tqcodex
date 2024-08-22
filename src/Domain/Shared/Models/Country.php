@@ -52,16 +52,6 @@ final class Country extends BaseModel
         return $this->hasMany(ContactProfileAddress::class);
     }
 
-    /**
-     * Get the organization adresses that related to this Country.
-     *
-     * @return HasMany<OrgAddress>
-     */
-    public function orgaddresses(): HasMany
-    {
-        return $this->hasMany(OrgAddress::class);
-    }
-
     public function label(): string
     {
         return __('country.'.$this->iso2);

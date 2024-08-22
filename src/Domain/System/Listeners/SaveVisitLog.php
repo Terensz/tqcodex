@@ -29,12 +29,12 @@ class SaveVisitLog
         /**
          * Checking each and every guards if they authenticated a user.
          */
-        $user_id = null;
+        $admin_id = null;
         $contact_id = null;
         foreach (UserService::getGuardedUsers() as $roleType => $userModel) {
 
             if ($userModel && $roleType === UserService::ROLE_TYPE_ADMIN) {
-                $user_id = $userModel->id;
+                $admin_id = $userModel->id;
             }
             if ($userModel && $roleType === UserService::ROLE_TYPE_CUSTOMER) {
                 $contact_id = $userModel->id;
@@ -65,7 +65,7 @@ class SaveVisitLog
             // $visitLog->route_name = RouteHelper::getCurrentRouteName();
         }
 
-        $visitLog->user_id = $user_id;
+        $visitLog->admin_id = $admin_id;
         $visitLog->contact_id = $contact_id;
         $visitLog->save();
     }

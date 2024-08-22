@@ -3,34 +3,34 @@
 namespace Domain\Admin\Rules;
 
 use Closure;
-use Domain\Admin\Models\User;
-use Domain\Admin\Models\UserToken;
+use Domain\Admin\Models\Admin;
+use Domain\Admin\Models\AdminToken;
 use Domain\Shared\Helpers\TokenHelper;
 use Illuminate\Contracts\Validation\ValidationRule;
 
 class ValidAdminEmailChangeToken implements ValidationRule
 {
-    public $user;
+    public $admin;
 
-    public $userToken;
+    public $adminToken;
 
     public $newEmail;
 
-    public function __construct(?User $user, ?UserToken $userToken, string $newEmail)
+    public function __construct(?Admin $admin, ?AdminToken $userToken, string $newEmail)
     {
-        $this->user = $user;
-        $this->userToken = $userToken;
+        $this->admin = $admin;
+        $this->adminToken = $userToken;
         $this->newEmail = $newEmail;
     }
 
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
         // dump($this->userToken);exit;
-        if ($this->userToken && ! TokenHelper::verifyTokenLifetime($this->userToken->token)) {
+        if ($this->adminToken && ! TokenHelper::verifyTokenLifetime($this->adminToken->token)) {
             $fail('user.ExpiredToken');
         }
 
-        if (! $this->userToken || $this->newEmail !== $this->userToken->email) {
+        if (! $this->adminToken || $this->newEmail !== $this->adminToken->email) {
             $fail('passwords.InvalidToken');
         }
     }

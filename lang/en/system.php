@@ -4,7 +4,7 @@ return [
 
     'SystemErrorLogs' => 'System error logs',
     'VisitLogs' => 'Visit logs',
-    'UserActivityLogs' => 'User activity logs',
+    'AdminActivityLogs' => 'Admin activity logs',
     'ContactActivityLogs' => 'Contact activity logs',
 
 ];

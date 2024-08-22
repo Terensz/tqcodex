@@ -13,11 +13,11 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-            //UserSeeder::class,
             CountrySeeder::class,
             RoleSeeder::class,
             PermissionSeeder::class,
             SuperAdminPermissionSeeder::class,
+            AdminSeeder::class,
             CustomerPermissionSeeder::class,
         ]);
 
@@ -26,11 +26,11 @@ class DatabaseSeeder extends Seeder
          */
         if (app()->environment('local') || app()->environment('testing')) {
             $this->call([
-                UserSeeder::class,
+                // AdminSeeder::class,
                 ContactSeeder::class,
-                OrganizationSeeder::class,
-                CompensationItemSeeder::class,
-                CommunicationSeeder::class,
+                // OrganizationSeeder::class,
+                // CompensationItemSeeder::class,
+                // CommunicationSeeder::class,
             ]);
         }
     }

@@ -1,9 +1,9 @@
 <?php
 
 return [
-    'CurrentSystemName' => 'Elszámolási Rendszer',
-    'FromCurrentSystemName' => 'az Elszámolási Rendszerből',
-    'ToCurrentSystemName' => 'az Elszámolási Rendszerbe',
+    'CurrentSystemName' => 'Titan Quest Codex',
+    'FromCurrentSystemName' => 'a Titan Quest Codex-ből',
+    'ToCurrentSystemName' => 'a Titan Quest Codex-be',
 
     'Accounting' => 'Pénzügyi elszámolás',
     'CompensationItem' => 'Kompenzációs tétel',

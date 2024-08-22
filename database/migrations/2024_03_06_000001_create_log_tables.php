@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('useractivitylogs', function (Blueprint $table): void {
+        Schema::create('adminactivitylogs', function (Blueprint $table): void {
             $table->id();
-            $table->foreignId('user_id')->nullable()->constrained();
+            $table->foreignId('admin_id')->nullable()->constrained();
             $table->string('action');
             $table->string('modified_property', 128)->nullable();
             $table->text('original_value')->nullable();
@@ -41,7 +41,7 @@ return new class extends Migration
 
         Schema::create('visitlogs', function (Blueprint $table): void {
             $table->id();
-            $table->foreignId('user_id')->nullable()->constrained();
+            $table->foreignId('admin_id')->nullable()->constrained();
             $table->foreignId('contact_id')->nullable()->constrained();
             $table->text('url');
             // $table->string('route_name');
@@ -55,7 +55,7 @@ return new class extends Migration
 
         Schema::create('exceptionlogs', function (Blueprint $table): void {
             $table->id();
-            $table->foreignId('user_id')->nullable()->constrained();
+            $table->foreignId('admin_id')->nullable()->constrained();
             $table->foreignId('contact_id')->nullable()->constrained();
             $table->text('message')->nullable();
             $table->string('code')->nullable();
@@ -71,7 +71,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('useractivitylogs');
+        Schema::dropIfExists('adminactivitylogs');
         Schema::dropIfExists('contactactivitylogs');
         Schema::dropIfExists('visitlogs');
         Schema::dropIfExists('exceptionlogs');

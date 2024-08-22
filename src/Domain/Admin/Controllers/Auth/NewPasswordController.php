@@ -2,8 +2,8 @@
 
 namespace Domain\Admin\Controllers\Auth;
 
-use Domain\Admin\Models\User;
-use Domain\Admin\Rules\UserRules;
+use Domain\Admin\Models\Admin;
+use Domain\Admin\Rules\AdminRules;
 use Domain\Admin\Rules\ValidAdminPasswordResetToken;
 use Domain\Shared\Controllers\Base\BaseContentController;
 use Domain\User\Services\UserService;
@@ -41,15 +41,15 @@ class NewPasswordController extends BaseContentController
     {
         $requestData = $request->only('email', 'password', 'password_confirmation', 'token');
 
-        $user = User::where('email', $requestData['email'])->first();
+        $user = Admin::where('email', $requestData['email'])->first();
 
         // dump($user);exit;
 
-        $rulesConfig = UserRules::rules();
+        $rulesConfig = AdminRules::rules();
 
         $rules = [
             'token' => ['required'],
-            'email' => ['required', 'email', new ValidAdminPasswordResetToken($user instanceof User ? $user : null, $requestData['token'])],
+            'email' => ['required', 'email', new ValidAdminPasswordResetToken($user instanceof Admin ? $user : null, $requestData['token'])],
             // 'email' => ['required', 'email'],
             'password' => $rulesConfig['technicalPassword'],
         ];

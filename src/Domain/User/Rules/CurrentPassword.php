@@ -3,7 +3,7 @@
 namespace Domain\User\Rules;
 
 use Closure;
-use Domain\Admin\Models\User;
+use Domain\Admin\Models\Admin;
 use Domain\Customer\Models\Contact;
 use Domain\User\Services\UserService;
 use Illuminate\Contracts\Validation\ValidationRule;
@@ -17,7 +17,7 @@ class CurrentPassword implements ValidationRule
 
     public $passwordTry;
 
-    public function __construct(Contact|User|null $user, int|string|null $passwordTry)
+    public function __construct(Contact|Admin|null $user, int|string|null $passwordTry)
     {
         // $this->roleType = $roleType;
         $this->user = $user;

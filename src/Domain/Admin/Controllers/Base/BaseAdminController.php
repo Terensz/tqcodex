@@ -2,7 +2,7 @@
 
 namespace Domain\Admin\Controllers\Base;
 
-use Domain\Admin\Models\User;
+use Domain\Admin\Models\Admin;
 use Domain\User\Controllers\Base\BaseUserManagementController;
 use Domain\User\Services\UserService;
 
@@ -13,13 +13,13 @@ class BaseAdminController extends BaseUserManagementController
     //     return UserService::getUser(UserService::ROLE_TYPE_ADMIN);
     // }
 
-    public function getUserData(): array
+    public function getAdminData(): array
     {
-        $user = UserService::getUser(UserService::ROLE_TYPE_ADMIN);
+        $admin = UserService::getUser(UserService::ROLE_TYPE_ADMIN);
 
         return [
-            'name' => $user && $user instanceof User ? $user->name : null,
-            'email' => $user && $user instanceof User ? $user->email : null,
+            'name' => $admin && $admin instanceof Admin ? $admin->name : null,
+            'email' => $admin && $admin instanceof Admin ? $admin->email : null,
         ];
     }
 
@@ -36,11 +36,11 @@ class BaseAdminController extends BaseUserManagementController
                 ],
             ],
             [
-                'title' => 'ManageUsers',
+                'title' => 'ManageAdmins',
                 'items' => [
                     [
-                        'routeName' => 'admin.user-list',
-                        'title' => 'UserList',
+                        'routeName' => 'admin.admin-list',
+                        'title' => 'AdminList',
                     ],
                 ],
             ],

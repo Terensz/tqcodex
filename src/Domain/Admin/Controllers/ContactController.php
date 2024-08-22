@@ -34,7 +34,7 @@ class ContactController extends BaseAdminController
     {
         return $this->renderContent($request, 'admin.customer.contact.list', __('shared.ListOfItem', ['plural_item' => __('admin.Customers')]), [
             'menu' => $this->getMenuData(),
-            'user' => $this->getUserData(),
+            'admin' => $this->getAdminData(),
             'formUrlBase' => '/'.UserService::getHome(UserService::ROLE_TYPE_ADMIN).'/contact-edit',
         ]);
     }
