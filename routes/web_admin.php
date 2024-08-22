@@ -21,10 +21,10 @@ Route::middleware([])->group(function () {
     Route::middleware(['redirect.admin.if.authenticated'])->prefix($prefix.'/'.env('APP_SECONDARY_KEY'))->group(function () {
         /**
          * pl.: http://tqcodex/admin/9vH3sjv1LVjYI3cejVyKMNnQeAgKR9/belepes
-        */
+         */
         Route::get('/belepes', [AuthenticatedSessionController::class, 'login'])
             ->name('admin.login');
-        
+
         Route::redirect('/'.UserService::ROUTE_PREFIXES[UserService::ROLE_TYPE_ADMIN].'/login', '/'.UserService::ROUTE_PREFIXES[UserService::ROLE_TYPE_ADMIN].'/belepes');
 
         Route::post('/belepes', [AuthenticatedSessionController::class, 'auth'])

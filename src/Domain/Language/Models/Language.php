@@ -15,10 +15,10 @@ class Language extends BaseModel
 
     public $timestamps = false;
 
-    public function getIsDefaultReadableAttribute()
-    {
-        return $this->is_default ? __('shared.bool.Yes') : __('shared.bool.No');
-    }
+    // public function getIsDefaultReadableAttribute()
+    // {
+    //     return $this->is_default ? __('shared.bool.Yes') : __('shared.bool.No');
+    // }
 
     protected static function boot()
     {
