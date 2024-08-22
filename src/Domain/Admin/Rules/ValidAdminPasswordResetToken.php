@@ -11,13 +11,13 @@ use Illuminate\Support\Facades\Password;
 
 class ValidAdminPasswordResetToken implements ValidationRule
 {
-    public $user;
+    public $admin;
 
     public $token;
 
-    public function __construct(?Admin $user, $token)
+    public function __construct(?Admin $admin, $token)
     {
-        $this->user = $user;
+        $this->admin = $admin;
         $this->token = $token;
     }
 
@@ -25,10 +25,10 @@ class ValidAdminPasswordResetToken implements ValidationRule
     {
         // dump($this->token);exit;
         $broker = null;
-        if ($this->user && $this->token) {
+        if ($this->admin && $this->token) {
             $broker = Password::broker(UserService::getAuthProvider(UserService::ROLE_TYPE_ADMIN));
         }
-        if (! $this->user || ! $this->token || ! $broker instanceof PasswordBroker || ! $broker->tokenExists($this->user, $this->token)) {
+        if (! $this->admin || ! $this->token || ! $broker instanceof PasswordBroker || ! $broker->tokenExists($this->admin, $this->token)) {
             $fail(__('passwords.InvalidToken'));
         }
     }

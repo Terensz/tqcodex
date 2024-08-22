@@ -14,7 +14,7 @@ class AdminActivityLog extends BaseModel
     protected $table = 'adminactivitylogs';
 
     protected $fillable = [
-        'user_id',
+        'admin_id',
         'action',
         'modified_property',
         'original_value',

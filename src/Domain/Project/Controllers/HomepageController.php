@@ -18,7 +18,7 @@ class HomepageController extends BaseContentController
     public function index(Request $request)
     {
         return $this->renderPage($request, __('shared.Homepage'), [
-            
+
         ]);
     }
 }

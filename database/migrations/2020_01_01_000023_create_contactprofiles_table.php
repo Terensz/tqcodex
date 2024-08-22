@@ -2,9 +2,6 @@
 
 declare(strict_types=1);
 
-use Domain\Customer\Enums\BusinessType;
-use Domain\Customer\Enums\ContactSegment;
-use Domain\Customer\Enums\ContactStatus;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;

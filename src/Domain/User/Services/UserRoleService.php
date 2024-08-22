@@ -44,6 +44,7 @@ class UserRoleService
     {
         $user = self::getAdminIfPermitted($user);
         $user->assignRole($roleName);
+
         return $user->refresh();
     }
 

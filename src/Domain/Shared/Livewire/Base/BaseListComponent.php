@@ -102,7 +102,7 @@ abstract class BaseListComponent extends BaseLivewireComponent
 
     /**
      * Reference to a class beginning with lowercase
-     * We use it e.g. in route: '.../{user}'
+     * We use it e.g. in route: '.../{admin}'
      */
     public $entityClassReference = 'model';
 

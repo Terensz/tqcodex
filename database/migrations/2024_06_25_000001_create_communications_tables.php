@@ -17,7 +17,6 @@ return new class extends Migration
          * - The campaign is always the reason for the communication.
          *
          * - Your org can create a campaign. If it does so, than anyone can see that in the campaigns' list, who has the permission.
-         *
          */
         Schema::create('communicationcampaigns', function (Blueprint $table) {
             $table->unsignedBigInteger('id')->autoIncrement();

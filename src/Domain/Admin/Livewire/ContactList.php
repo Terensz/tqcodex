@@ -44,7 +44,7 @@ final class ContactList extends BaseListComponent
      *
      * @var string
      */
-    public $editRoute = 'admin.admin.contact.edit';
+    public $editRoute = 'admin.customer.contact.edit';
 
     public $entityClassReference = 'contact';
 

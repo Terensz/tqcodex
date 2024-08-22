@@ -235,7 +235,7 @@ class ContactRegisterForm extends BaseLivewireForm implements EditFormInterface
             $this->contactProfile->setContact($this->contact);
             $this->contactProfile->save();
             $this->contactProfile = $this->contactProfile->refresh();
-            
+
         } catch (QueryException $e) {
             Log::error('/src/Domain/Project/Livewire/Forms/ContactRegisterForm.php '.$e);
             exit;

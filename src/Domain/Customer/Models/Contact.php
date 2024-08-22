@@ -6,7 +6,6 @@ namespace Domain\Customer\Models;
 
 use Domain\Admin\Models\Admin;
 use Domain\Customer\Builders\ContactBuilder;
-use Domain\Shared\Enums\DBSortDirection;
 use Domain\Shared\Models\BaseModel;
 use Domain\User\Models\Role;
 use Domain\User\Services\UserRoleService;
@@ -20,8 +19,6 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Support\Carbon;

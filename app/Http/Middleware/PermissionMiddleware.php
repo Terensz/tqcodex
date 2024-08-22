@@ -3,8 +3,6 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Domain\Admin\Models\User;
-use Domain\Customer\Models\Contact;
 use Domain\User\Services\UserRoleService;
 use Domain\User\Services\UserService;
 use Illuminate\Auth\Middleware\Authenticate as Middleware;

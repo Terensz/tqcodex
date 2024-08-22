@@ -2,7 +2,6 @@
 
 namespace Domain\User\Builders;
 
-use Domain\Admin\Models\User;
 use Domain\Shared\Builders\Base\BaseBuilder;
 use Domain\User\Models\Role;
 use Domain\User\Services\UserRoleService;

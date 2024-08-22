@@ -3,7 +3,6 @@
 namespace Domain\Admin\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Domain\Admin\Models\User;
 use Domain\User\Services\UserService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;

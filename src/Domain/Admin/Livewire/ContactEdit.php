@@ -22,7 +22,7 @@ class ContactEdit extends BaseEditComponent
     public function getEditRouteComponents(): array
     {
         return [
-            'name' => 'admin.admin.contact.edit',
+            'name' => 'admin.customer.contact.edit',
             'paramArray' => UserService::getRouteParamArray(UserService::ROLE_TYPE_ADMIN, ['contact' => $this->getEntityObject()]),
         ];
     }

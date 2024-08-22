@@ -17,7 +17,6 @@ use Domain\User\Services\UserService;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\PermissionRegistrar;
@@ -220,7 +219,7 @@ final class Admin extends BaseAdminModel
         if (is_string($role)) {
             return $this->getRoleClass()::findByName($role, UserService::GUARD_ADMIN);
         }
-        
+
         return $role;
     }
 

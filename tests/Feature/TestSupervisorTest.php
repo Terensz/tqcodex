@@ -2,11 +2,11 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
 use Illuminate\Support\Facades\File;
+use Tests\TestCase;
 
 /*
-Standalone run: 
+Standalone run:
 php artisan test tests/Feature/TestSupervisorTest.php
 */
 
@@ -31,10 +31,10 @@ class TestSupervisorTest extends TestCase
     {
         // Looping through the tests/ directory, collecting all existing test files.
         $allTestFiles = collect(File::allFiles(base_path('tests')))->map(function ($file) {
-            return str_replace(base_path() . '/', '', $file->getPathname());
+            return str_replace(base_path().'/', '', $file->getPathname());
         })->filter(function ($file) {
             // We only collect .php files that are not inside skip directories.
-            return substr($file, -4) === '.php' && !$this->isInSkippedDirectory($file);
+            return substr($file, -4) === '.php' && ! $this->isInSkippedDirectory($file);
         })->toArray();
 
         // Checking all configured ($this->tests) tests are available.
@@ -52,9 +52,6 @@ class TestSupervisorTest extends TestCase
 
     /**
      * Check if a file is inside a skipped directory.
-     *
-     * @param string $pathToFile
-     * @return bool
      */
     private function isInSkippedDirectory(string $pathToFile): bool
     {

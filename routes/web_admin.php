@@ -18,11 +18,13 @@ Route::middleware([])->group(function () {
     /**
      * Admin logged out routes
      */
-    Route::middleware(['redirect.admin.if.authenticated'])->prefix($prefix)->group(function () {
+    Route::middleware(['redirect.admin.if.authenticated'])->prefix($prefix.'/'.env('APP_SECONDARY_KEY'))->group(function () {
+        /**
+         * pl.: http://tqcodex/admin/9vH3sjv1LVjYI3cejVyKMNnQeAgKR9/belepes
+        */
         Route::get('/belepes', [AuthenticatedSessionController::class, 'login'])
             ->name('admin.login');
-
-        // Route::redirect('/login', '/belepes');
+        
         Route::redirect('/'.UserService::ROUTE_PREFIXES[UserService::ROLE_TYPE_ADMIN].'/login', '/'.UserService::ROUTE_PREFIXES[UserService::ROLE_TYPE_ADMIN].'/belepes');
 
         Route::post('/belepes', [AuthenticatedSessionController::class, 'auth'])
@@ -133,24 +135,24 @@ Route::middleware(['auth.admin', 'verify.access.token:'.UserService::ROLE_TYPE_A
         /**
          * UserList
          */
-        Route::get('admin/user/list', [Domain\Admin\Controllers\AdminController::class, 'list'])
+        Route::get('admin/admin/list', [Domain\Admin\Controllers\AdminController::class, 'list'])
             ->middleware('permission:'.PermissionService::createPermissionName(PermissionService::PREFIX_VIEW, PermissionSuffixService::SUFFIX_ADMIN_ADMINS).','.UserService::getGuardName(UserService::ROLE_TYPE_ADMIN))
-            ->name('admin.admin.user.list');
+            ->name('admin.admin.list');
 
-        Route::match(['get', 'post'], 'admin/user/edit/{user?}', [Domain\Admin\Controllers\AdminController::class, 'edit'])
+        Route::match(['get', 'post'], 'admin/admin/edit/{admin?}', [Domain\Admin\Controllers\AdminController::class, 'edit'])
             ->middleware('permission:'.PermissionService::createPermissionName(PermissionService::PREFIX_EDIT, PermissionSuffixService::SUFFIX_ADMIN_ADMINS).','.UserService::getGuardName(UserService::ROLE_TYPE_ADMIN))
-            ->name('admin.admin.user.edit');
+            ->name('admin.admin.edit');
 
         /**
          * ContactList
          */
-        Route::get('admin/contact/list', [Domain\Admin\Controllers\ContactController::class, 'list'])
+        Route::get('admin/customer/contact/list', [Domain\Admin\Controllers\ContactController::class, 'list'])
             ->middleware('permission:'.PermissionService::createPermissionName(PermissionService::PREFIX_VIEW, PermissionSuffixService::SUFFIX_ADMIN_CUSTOMERS).','.UserService::getGuardName(UserService::ROLE_TYPE_ADMIN))
-            ->name('admin.admin.contact.list');
+            ->name('admin.customer.contact.list');
 
-        Route::match(['get', 'post'], 'admin/contact/edit/{contact?}', [Domain\Admin\Controllers\ContactController::class, 'edit'])
+        Route::match(['get', 'post'], 'admin/customer/contact/edit/{contact?}', [Domain\Admin\Controllers\ContactController::class, 'edit'])
             ->middleware('permission:'.PermissionService::createPermissionName(PermissionService::PREFIX_EDIT, PermissionSuffixService::SUFFIX_ADMIN_CUSTOMERS).','.UserService::getGuardName(UserService::ROLE_TYPE_ADMIN))
-            ->name('admin.admin.contact.edit');
+            ->name('admin.customer.contact.edit');
 
         Route::match(['get', 'post'], 'admin/contact/impersonate/{contact?}', [Domain\Admin\Controllers\ContactController::class, 'impersonate'])
             ->middleware('permission:'.PermissionService::createPermissionName(PermissionService::PREFIX_EDIT, PermissionSuffixService::SUFFIX_ADMIN_CUSTOMERS).','.UserService::getGuardName(UserService::ROLE_TYPE_ADMIN))

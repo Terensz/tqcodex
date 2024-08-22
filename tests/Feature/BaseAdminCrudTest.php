@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use Domain\Admin\Models\User;
+use Domain\Admin\Models\Admin;
 use Domain\Language\Livewire\LanguageEdit;
 use Domain\Language\Models\Language;
 use Domain\Shared\Livewire\Base\BaseEditComponent;
@@ -37,7 +37,7 @@ abstract class BaseAdminCrudTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->admin = User::factory()->create();
+        $this->admin = Admin::factory()->create();
         UserRoleService::assignRoleToAdmin(RoleService::ROLE_SUPER_ADMIN, $this->admin);
 
         $this->actingAs($this->admin, UserService::GUARD_ADMIN);

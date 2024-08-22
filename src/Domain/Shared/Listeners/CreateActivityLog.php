@@ -39,7 +39,7 @@ class CreateActivityLog
             ];
             if ($event->roleType === UserService::ROLE_TYPE_ADMIN) {
                 $model = new AdminActivityLog;
-                $propertyArray['user_id'] = $event->user_id;
+                $propertyArray['admin_id'] = $event->user_id;
             } else {
                 $model = new ContactActivityLog;
                 $propertyArray['contact_id'] = $event->user_id;

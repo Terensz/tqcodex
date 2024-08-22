@@ -41,7 +41,7 @@ class NewPasswordController extends BaseContentController
     {
         $requestData = $request->only('email', 'password', 'password_confirmation', 'token');
 
-        $user = Admin::where('email', $requestData['email'])->first();
+        $admin = Admin::where('email', $requestData['email'])->first();
 
         // dump($user);exit;
 
@@ -49,7 +49,7 @@ class NewPasswordController extends BaseContentController
 
         $rules = [
             'token' => ['required'],
-            'email' => ['required', 'email', new ValidAdminPasswordResetToken($user instanceof Admin ? $user : null, $requestData['token'])],
+            'email' => ['required', 'email', new ValidAdminPasswordResetToken($admin instanceof Admin ? $admin : null, $requestData['token'])],
             // 'email' => ['required', 'email'],
             'password' => $rulesConfig['technicalPassword'],
         ];

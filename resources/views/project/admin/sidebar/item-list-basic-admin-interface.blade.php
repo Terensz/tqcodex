@@ -18,13 +18,13 @@ $currentRouteName = Route::currentRouteName();
 </li>
 
 <li>
-    <a href="{{ route('admin.admin.user.list', ['access_token' => AccessTokenService::getAccessToken(UserService::ROLE_TYPE_ADMIN)]) }}" class="{{ $currentRouteName == 'admin.admin.user.list' ? 'bg-gray-800' : '' }} text-gray-400 hover:text-white group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold">
+    <a href="{{ route('admin.admin.list', ['access_token' => AccessTokenService::getAccessToken(UserService::ROLE_TYPE_ADMIN)]) }}" class="{{ $currentRouteName == 'admin.admin.list' ? 'bg-gray-800' : '' }} text-gray-400 hover:text-white group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold">
     @include('components.icons.svg.user-plus')
     {{ __('admin.AdminList') }}
     </a>
 </li>
 <li>
-    <a href="{{ route('admin.admin.contact.list', ['access_token' => AccessTokenService::getAccessToken(UserService::ROLE_TYPE_ADMIN)]) }}" class="{{ $currentRouteName == 'admin.admin.contact.list' ? 'bg-gray-800' : '' }} text-gray-400 hover:text-white group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold">
+    <a href="{{ route('admin.customer.contact.list', ['access_token' => AccessTokenService::getAccessToken(UserService::ROLE_TYPE_ADMIN)]) }}" class="{{ $currentRouteName == 'admin.customer.contact.list' ? 'bg-gray-800' : '' }} text-gray-400 hover:text-white group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold">
     @include('components.icons.svg.user')
     {{ __('admin.CustomerList') }}
     </a>

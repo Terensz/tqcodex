@@ -52,6 +52,6 @@ class AuthenticatedSessionController extends BaseContentController
     {
         UserService::logoutGuard(UserService::ROLE_TYPE_ADMIN);
 
-        return redirect(route('admin.login'));
+        return redirect(route('project.homepage'));
     }
 }

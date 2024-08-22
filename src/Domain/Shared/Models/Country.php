@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Domain\Shared\Models;
 
 use Domain\Customer\Models\ContactProfileAddress;
-use Domain\Customer\Models\OrgAddress;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**

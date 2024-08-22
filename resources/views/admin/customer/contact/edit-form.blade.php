@@ -13,10 +13,14 @@ use Domain\Shared\Livewire\Base\BaseEditComponent;
     </header>
     <div class="form-container">
         <form class="mt-6 space-y-6">
-        @include('admin.admin.edit-form-inner')
-        @include('admin.admin.role-to-user')
-        @include('admin.admin.edit-form-scripts')
-        @include('common.general-edit-form-buttons')
+        @if ($showContactProfile)
+            @include('admin.customer.contact.edit-form-inner')
+            @include('admin.customer.contact.role-to-contact')
+            @include('admin.customer.contact.edit-form-scripts')
+            @include('common.general-edit-form-buttons')
+        @else
+            {{ __('contact.MissingContactProfile') }}
+        @endif
         </form>
     </div>
 </section>

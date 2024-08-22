@@ -17,7 +17,7 @@ class ExceptionLog extends BaseModel
     protected $table = 'exceptionlogs';
 
     protected $fillable = [
-        'user_id',
+        'admin_id',
         'contact_id',
         'message',
         'code',

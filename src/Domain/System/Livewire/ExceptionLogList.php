@@ -12,7 +12,7 @@ final class ExceptionLogList extends BaseListComponent
     /**
      * @var string
      */
-    public $user_id;
+    public $admin_id;
 
     /**
      * @var string
@@ -82,8 +82,8 @@ final class ExceptionLogList extends BaseListComponent
     {
         $query = ExceptionLog::query();
 
-        if (! empty($this->user_id)) {
-            $query->where('user_id', 'like', '%'.$this->user_id.'%');
+        if (! empty($this->admin_id)) {
+            $query->where('admin_id', 'like', '%'.$this->admin_id.'%');
         }
 
         if (! empty($this->contact_id)) {
@@ -128,15 +128,15 @@ final class ExceptionLogList extends BaseListComponent
     {
         return [
             [
-                self::PROPERTY => 'user_id',
+                self::PROPERTY => 'admin_id',
                 self::INPUT_TYPE => ValidationHelper::INPUT_TYPE_TEXT,
-                self::TRANSLATION_REFERENCE => 'shared.UserId',
+                self::TRANSLATION_REFERENCE => 'admin.AdminId',
                 self::TRANSLATE_CELL_DATA => false,
             ],
             [
                 self::PROPERTY => 'contact_id',
                 self::INPUT_TYPE => ValidationHelper::INPUT_TYPE_TEXT,
-                self::TRANSLATION_REFERENCE => 'shared.ContactId',
+                self::TRANSLATION_REFERENCE => 'contact.ContactId',
                 self::TRANSLATE_CELL_DATA => false,
             ],
             [

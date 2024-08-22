@@ -2,7 +2,6 @@
 
 namespace Domain\Shared\Livewire;
 
-use Domain\Admin\Models\User;
 use Domain\Customer\Models\ContactActivityLog;
 use Domain\Shared\Helpers\ValidationHelper;
 use Domain\Shared\Livewire\Base\BaseListComponent;

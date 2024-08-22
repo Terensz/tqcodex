@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'AdminId' => 'Admin ID',
     'Admin' => 'Admin',
     'Admins' => 'Adminok',
     'Customer' => 'Ügyfél',

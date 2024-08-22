@@ -94,7 +94,7 @@ abstract class BaseContentController extends Controller
     {
         return $this->renderContent($request, 'public.page-switcher.page-livewire-loader', $title, $params);
     }
-    
+
     public function collectToastsFromSession(Request $request)
     {
         $toasts = [];

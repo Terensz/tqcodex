@@ -3,7 +3,6 @@
 namespace Domain\Customer\Builders;
 
 use Domain\Customer\Enums\ContactStatus;
-use Domain\Customer\Models\ContactProfile;
 use Domain\Shared\Builders\Base\BaseBuilder;
 use Domain\User\Services\UserService;
 

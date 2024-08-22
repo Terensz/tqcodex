@@ -23,12 +23,6 @@ $currentRouteName = Route::currentRouteName();
     {{ __('admin.BasicAdminInterface') }}
     </a>
 </li>
-<li>
-    <a href="{{ route('admin.project.dashboard', ['access_token' => AccessTokenService::getAccessToken(UserService::ROLE_TYPE_ADMIN)]) }}" class="{{ $contentBranch == BaseContentController::CONTENT_BRANCH_PROJECT_ADMIN_INTERFACE ? 'bg-gray-800' : '' }} text-gray-400 hover:text-white group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold">
-    @include('components.icons.svg.folder')
-    {{ __('admin.ProjectAdminInterface') }}
-    </a>
-</li>
 @if(config('project.webshop_active'))
 <li>
     <a href="{{ route('admin.webshop.dashboard', ['access_token' => AccessTokenService::getAccessToken(UserService::ROLE_TYPE_ADMIN)]) }}" class="{{ $contentBranch == BaseContentController::CONTENT_BRANCH_WEBSHOP_ADMIN_INTERFACE ? 'bg-gray-800' : '' }} text-gray-400 hover:text-white group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold">
